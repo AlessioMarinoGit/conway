@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=State
+comment0.text=\n\ Write\ a\ description\ of\ class\ State\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=row\ col
+comment1.target=boolean\ checkDeath(int,\ int)
+comment2.params=row\ col
+comment2.target=boolean\ checkBorn(int,\ int)
+comment3.params=
+comment3.target=void\ Step()
+comment4.params=
+comment4.target=int\ getGameState()
+comment5.params=gameState
+comment5.target=void\ setGameState(int)
+comment6.params=row\ col
+comment6.target=boolean\ getBoardCell(int,\ int)
+comment7.params=row\ col
+comment7.target=void\ toggleBoardCell(int,\ int)
+numComments=8
