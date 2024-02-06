@@ -24,9 +24,11 @@ public class Constants
     public static final String RESET_COMMAND = "reset";
     public static final String SET_GRID_SIZE_COMMAND = "set_board_size";
     public static final String EXIT_COMMAND = "exit";
+    public static final String HELP_COMMAND = "help";
     
     // Strings
     public static final String GET_COMMAND = "Please enter a command, type 'help' to see list of commands.";
+    public static final String INVALID_COMMAND = "Unknown command, type 'help' to see list of commands.";
     public static final String COMMANDS = TOGGLE_COMMAND + "\n" + START_COMMAND + "\n" + PAUSE_COMMAND + "\n" + RESET_COMMAND + "\n" + SET_GRID_SIZE_COMMAND + "\n" + EXIT_COMMAND;
     public static final String INVALID_CELL = "Cell %d, %d is not a valid cell. Please retry.";
 }
