@@ -8,9 +8,9 @@ package conway;
  */
 public class State
 {
-    private int gameState = Constants.PREPARE;
+    private int gameState = Constants.STANDBY;
     private boolean[][] board = new boolean[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
-
+    
     public static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
@@ -59,6 +59,10 @@ public class State
                 }
             }
         }
+    }
+    
+    public void toggleCommand(int x, int y) {
+        
     }
 
     public int getGameState() 
