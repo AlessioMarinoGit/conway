@@ -13,7 +13,7 @@ public class UI
     public int getRow() {
         int row = 0;
 
-        while (row < 1 && row > Constants.BOARD_SIZE) {
+        while (row < 1 || row > Constants.BOARD_SIZE) {
             try {
                 System.out.println(Constants.ASK_ROW);
                 row = scanner.nextInt();
@@ -28,7 +28,7 @@ public class UI
     public int getCol() {
         int col = 0;
 
-        while (col < 1 && col > Constants.BOARD_SIZE) {
+        while (col < 1 || col > Constants.BOARD_SIZE) {
             try {
                 System.out.println(Constants.ASK_COL);
                 col = scanner.nextInt();
@@ -43,13 +43,16 @@ public class UI
     public String getCommand() {
         String command = "";
 
-        while (!command.equals(Constants.TOGGLE_COMMAND) || !command.equals(Constants.START_COMMAND) || !command.equals(Constants.PAUSE_COMMAND) || !command.equals(Constants.RESET_COMMAND) || !command.equals(Constants.SET_GRID_SIZE_COMMAND) || !command.equals(Constants.EXIT_COMMAND) || !command.equals(Constants.HELP_COMMAND)) {
+        while (!state.isValidCommand(command)) {
             try {
                 System.out.println(Constants.ASK_COMMAND);
                 command = scanner.nextLine();
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_COMMAND);
                 scanner.next();
+            }
+            if (!state.isValidCommand(command)) {
+                System.out.println(Constants.INVALID_COMMAND);
             }
         }
         return command;

@@ -10,12 +10,13 @@ public class Constants
     // Game states
     public static final int STANDBY = 1;
     public static final int GET_COMMAND = 2;
-    public static final int START = 3;
-    public static final int CHANGE_BOARD = 4;
-    public static final int SHOW_BOARD = 5;
-    public static final int PAUSE = 6;
-    public static final int RESET = 7;
-    public static final int QUIT_PROGRAM = 8;
+    public static final int RUN_COMMAND = 3;
+    public static final int START = 4;
+    public static final int CHANGE_BOARD = 5;
+    public static final int SHOW_BOARD = 6;
+    public static final int PAUSE = 7;
+    public static final int RESET = 8;
+    public static final int QUIT_PROGRAM = 9;
     
     // Commands
     public static final String TOGGLE_COMMAND = "toggle";

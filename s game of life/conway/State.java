@@ -61,8 +61,17 @@ public class State
         }
     }
     
+    public boolean isValidCommand(String command) {
+        if (command.equals(Constants.TOGGLE_COMMAND) || command.equals(Constants.START_COMMAND) || command.equals(Constants.PAUSE_COMMAND) || command.equals(Constants.RESET_COMMAND) || command.equals(Constants.SET_GRID_SIZE_COMMAND) || command.equals(Constants.EXIT_COMMAND) || command.equals(Constants.HELP_COMMAND)) {
+            return true;
+        }
+        return false;
+    }
+    
     public void toggleCommand(int x, int y) {
-        
+        this.setBoardCell(true, x, y);
+        System.out.println(this.getBoardCell(x,y));
+        System.out.println(this.getBoardCell(x+1,y+1));
     }
 
     public int getGameState() 
@@ -76,6 +85,10 @@ public class State
 
     public boolean getBoardCell(int row, int col) {
         return this.board[row][col];
+    }
+
+    public void setBoardCell(boolean value, int row, int col) {
+          this.board[row][col] = value;
     }
 
     public void toggleBoardCell(int row, int col) {
