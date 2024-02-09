@@ -2,10 +2,10 @@ package conway;
 
 public class Constants
 {
-    public static final int BOARD_SIZE = 25;
+    public static final int BOARD_SIZE = 10;
     // Valid board values
-    public static final boolean DEAD = false;
-    public static final boolean ALIVE = true;
+    public static final int DEAD = 0;
+    public static final int ALIVE = 1;
 
     // Game states
     public static final int STANDBY = 1;

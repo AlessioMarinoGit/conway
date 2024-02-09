@@ -9,13 +9,13 @@ package conway;
 public class State
 {
     private int gameState = Constants.STANDBY;
-    private boolean[][] board = new boolean[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+    private int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
     
     public static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
     
-    public boolean checkDeath(int row, int col) {
+    public int checkDeath(int row, int col) {
         int surrounding = 0;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
@@ -26,13 +26,13 @@ public class State
         }
         
         if (surrounding < 2 && surrounding > 3) {
-            return false;
+            return Constants.DEAD;
         }
         
-        return true;
+        return Constants.ALIVE;
     }
     
-    public boolean checkBorn(int row, int col) {
+    public int checkBorn(int row, int col) {
         int surrounding = 0;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
@@ -43,10 +43,10 @@ public class State
         }
         
         if (surrounding == 3) {
-            return true;
+            return Constants.ALIVE;
         }
         
-        return false;
+        return Constants.DEAD;
     }
 
     public void Step() {
@@ -69,9 +69,8 @@ public class State
     }
     
     public void toggleCommand(int x, int y) {
-        this.setBoardCell(true, x, y);
+        this.toggleBoardCell(x, y);
         System.out.println(this.getBoardCell(x,y));
-        System.out.println(this.getBoardCell(x+1,y+1));
     }
 
     public int getGameState() 
@@ -83,15 +82,17 @@ public class State
         this.gameState = gameState;
     }
 
-    public boolean getBoardCell(int row, int col) {
-        return this.board[row][col];
-    }
-
-    public void setBoardCell(boolean value, int row, int col) {
-          this.board[row][col] = value;
-    }
-
     public void toggleBoardCell(int row, int col) {
-        this.board[row][col] = !this.board[row][col];
+        if (this.board[row][col] == Constants.ALIVE) {
+            this.board[row][col] = Constants.DEAD;
+            System.out.print("Cell is Dead");
+        } else { 
+            this.board[row][col] = Constants.ALIVE;
+            System.out.print("Cell is Alive");
+        }
+    }
+
+    public int getBoardCell(int row, int col) {
+        return board[row][col];
     }
 }

@@ -58,7 +58,8 @@ public class UI
         return command;
     }
 
-    public String cellToString(boolean cell) {
+    public String cellToString(int cell) {
+        System.out.print(cell);
         if (cell == Constants.ALIVE) {
             return Constants.ALIVE_CELL;
         } else {
@@ -70,6 +71,7 @@ public class UI
         for (int x = 0; x < Constants.BOARD_SIZE; x++) {
             for (int y = 0; y < Constants.BOARD_SIZE; y++) {
                 System.out.print(cellToString(state.getBoardCell(x,y)));
+                System.out.print(state.getBoardCell(x,y));
             }
             System.out.println();
         }
