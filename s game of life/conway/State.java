@@ -9,7 +9,7 @@ package conway;
 public class State
 {
     private int gameState = Constants.STANDBY;
-    private int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+    private static int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
     
     public static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
@@ -70,7 +70,6 @@ public class State
     
     public void toggleCommand(int x, int y) {
         this.toggleBoardCell(x, y);
-        System.out.println(this.getBoardCell(x,y));
     }
 
     public int getGameState() 
@@ -83,16 +82,15 @@ public class State
     }
 
     public void toggleBoardCell(int row, int col) {
-        if (this.board[row][col] == Constants.ALIVE) {
+        if (this.getBoardCell(row, col) == Constants.ALIVE) {
             this.board[row][col] = Constants.DEAD;
-            System.out.print("Cell is Dead");
         } else { 
             this.board[row][col] = Constants.ALIVE;
-            System.out.print("Cell is Alive");
         }
     }
 
     public int getBoardCell(int row, int col) {
-        return board[row][col];
+        int cell = board[row][col];
+        return cell;
     }
 }

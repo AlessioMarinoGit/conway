@@ -34,6 +34,6 @@ public class Constants
     public static final String ASK_ROW = "Please enter row";
     public static final String ASK_COL = "Please enter column";
     public static final String INVALID_CELL = "Cell %d, %d is not a valid cell. Please retry.";
-    public static final String ALIVE_CELL = "##";
+    public static final String ALIVE_CELL = ":D";
     public static final String DEAD_CELL = "[]";
 }
