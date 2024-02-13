@@ -10,23 +10,29 @@ public class EventLoop
 {
     State state = new State();
     UI ui = new UI();
-    
+
     int row, col;
+    int steps = 0;
 
     public static void main(String[] args) {
         EventLoop eventLoop = new EventLoop();
         eventLoop.run();
     }
-    
+
     public void runCommand(String command) {
+        state.setGameState(Constants.RUN_COMMAND);
         if (command.equals(Constants.TOGGLE_COMMAND)) {
             row = ui.getRow();
             col = ui.getCol();
-            
+
             state.toggleCommand(row, col);
-            
+
             ui.printBoard();
             state.setGameState(Constants.GET_COMMAND);
+        } else if (command.equals(Constants.START_COMMAND)) {
+            steps = ui.getSteps();
+
+            state.setGameState(Constants.RUN);
         }
     }
 
@@ -38,7 +44,13 @@ public class EventLoop
                 state.setGameState(Constants.GET_COMMAND);
             } else if (gameState == Constants.GET_COMMAND) {
                 this.runCommand(ui.getCommand());
-                state.setGameState(Constants.RUN_COMMAND);
+            } else if (gameState == Constants.RUN) {
+                while (steps > 0) {
+                    steps--;
+                    state.Step();
+                    ui.printBoard();
+                }
+                state.setGameState(Constants.STANDBY);
             }
         }
     }

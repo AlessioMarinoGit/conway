@@ -40,6 +40,21 @@ public class UI
         return col-1;
     }
 
+    public int getSteps() {
+        int steps = 0;
+
+        while (steps < 1 || steps > Constants.MAX_STEPS) {
+            try {
+                System.out.println(Constants.ASK_STEPS);
+                steps = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println(Constants.INVALID_STEPS);
+                scanner.next();
+            }
+        }
+        return steps;
+    }
+
     public String getCommand() {
         String command = "";
 
@@ -73,5 +88,10 @@ public class UI
             }
             System.out.println();
         }
+        for (int y = 0; y < Constants.BOARD_SIZE; y++) {
+
+            System.out.print(Constants.SEPERATION_BAR);
+        }
+        System.out.println();
     }
 }

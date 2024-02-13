@@ -25,7 +25,7 @@ public class State
             }
         }
         
-        if (surrounding < 2 && surrounding > 3) {
+        if (surrounding < 2 || surrounding > 3) {
             return Constants.DEAD;
         }
         
@@ -50,19 +50,21 @@ public class State
     }
 
     public void Step() {
+        int[][] quasiBoard = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
         for (int x = 0; x < Constants.BOARD_SIZE; x++) {
             for (int y = 0; y < Constants.BOARD_SIZE; y++) {
                 if (board[x][y] == Constants.ALIVE) {
-                    board[x][y] = this.checkDeath(x, y);
+                    quasiBoard[x][y] = this.checkDeath(x, y);
                 } else {
-                    board[x][y] = this.checkBorn(x,y);
+                    quasiBoard[x][y] = this.checkBorn(x,y);
                 }
             }
         }
+        board = quasiBoard;
     }
     
     public boolean isValidCommand(String command) {
-        if (command.equals(Constants.TOGGLE_COMMAND) || command.equals(Constants.START_COMMAND) || command.equals(Constants.PAUSE_COMMAND) || command.equals(Constants.RESET_COMMAND) || command.equals(Constants.SET_GRID_SIZE_COMMAND) || command.equals(Constants.EXIT_COMMAND) || command.equals(Constants.HELP_COMMAND)) {
+        if (command.equals(Constants.TOGGLE_COMMAND) || command.equals(Constants.START_COMMAND)|| command.equals(Constants.RESET_COMMAND) || command.equals(Constants.SET_GRID_SIZE_COMMAND) || command.equals(Constants.EXIT_COMMAND) || command.equals(Constants.HELP_COMMAND)) {
             return true;
         }
         return false;
