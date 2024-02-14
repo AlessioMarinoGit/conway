@@ -49,6 +49,14 @@ public class EventLoop
                     steps--;
                     state.Step();
                     ui.printBoard();
+                    try
+                    {
+                        Thread.sleep(Constants.DELAY);
+                    }
+                    catch (InterruptedException ie)
+                    {
+                        ie.printStackTrace();
+                    }
                 }
                 state.setGameState(Constants.STANDBY);
             }

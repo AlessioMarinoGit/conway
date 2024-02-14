@@ -10,42 +10,41 @@ public class State
 {
     private int gameState = Constants.STANDBY;
     private static int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
-    
+
     public static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
-    
-    public int checkDeath(int row, int col) {
+
+    public int checkLiveNeighbors(int row, int col) {
         int surrounding = 0;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
-                if (board[this.clamp(x, 0, Constants.BOARD_SIZE-1)][this.clamp(y, 0, Constants.BOARD_SIZE-1)] == Constants.ALIVE) {
-                    surrounding++;
+                if (row+x >= 0 && row+x < Constants.BOARD_SIZE && col+y >= 0 && col+y < Constants.BOARD_SIZE) {
+                    if (board[row+x][col+y] == Constants.ALIVE) {
+                        surrounding++;
+                        if (y == 0 && x == 0) {
+                            surrounding--;
+                        }
+                    }
                 }
             }
         }
-        
-        if (surrounding < 2 || surrounding > 3) {
+        return surrounding;
+    }
+
+    public int checkDeath(int row, int col) {
+        if (this.checkLiveNeighbors(row, col) <= 1 || this.checkLiveNeighbors(row, col) >= 4) {
             return Constants.DEAD;
         }
-        
+
         return Constants.ALIVE;
     }
-    
+
     public int checkBorn(int row, int col) {
-        int surrounding = 0;
-        for (int x = -1; x <= 1; x++) {
-            for (int y = -1; y <= 1; y++) {
-                if (board[this.clamp(x, 0, Constants.BOARD_SIZE-1)][this.clamp(y, 0, Constants.BOARD_SIZE-1)] == Constants.ALIVE) {
-                    surrounding++;
-                }
-            }
-        }
-        
-        if (surrounding == 3) {
+        if (this.checkLiveNeighbors(row, col) == 3) {
             return Constants.ALIVE;
         }
-        
+
         return Constants.DEAD;
     }
 
@@ -62,14 +61,14 @@ public class State
         }
         board = quasiBoard;
     }
-    
+
     public boolean isValidCommand(String command) {
         if (command.equals(Constants.TOGGLE_COMMAND) || command.equals(Constants.START_COMMAND)|| command.equals(Constants.RESET_COMMAND) || command.equals(Constants.SET_GRID_SIZE_COMMAND) || command.equals(Constants.EXIT_COMMAND) || command.equals(Constants.HELP_COMMAND)) {
             return true;
         }
         return false;
     }
-    
+
     public void toggleCommand(int x, int y) {
         this.toggleBoardCell(x, y);
     }

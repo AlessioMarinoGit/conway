@@ -4,6 +4,7 @@ public class Constants
 {
     public static final int BOARD_SIZE = 10;
     public static final int MAX_STEPS = 1000;
+    public static final int DELAY = 200;
     // Valid board values
     public static final int DEAD = 0;
     public static final int ALIVE = 1;
