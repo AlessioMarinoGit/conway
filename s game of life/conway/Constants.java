@@ -30,7 +30,13 @@ public class Constants
     // Strings
     public static final String ASK_COMMAND = "Please enter a command, type 'help' to see list of commands.";
     public static final String INVALID_COMMAND = "Unknown command, type 'help' to see list of commands.";
-    public static final String COMMANDS = TOGGLE_COMMAND + "\n" + START_COMMAND + "\n" + RESET_COMMAND + "\n" + SET_GRID_SIZE_COMMAND + "\n" + EXIT_COMMAND;
+    public static final String COMMANDS = (
+    TOGGLE_COMMAND + ": turns on and off a cell" + "\n" 
+    + START_COMMAND + ": runs the game for a certain amount of defined steps" + "\n" 
+    + RESET_COMMAND + ": resets the grid" + "\n" 
+    + SET_GRID_SIZE_COMMAND + ": sets the grid size" + "\n" 
+    + EXIT_COMMAND + ": exits the program"
+    );
     public static final String ASK_ROW = "Please enter row";
     public static final String ASK_COL = "Please enter column";
     public static final String ASK_STEPS = "Please enter steps";

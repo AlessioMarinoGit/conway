@@ -33,6 +33,10 @@ public class EventLoop
             steps = ui.getSteps();
 
             state.setGameState(Constants.RUN);
+        } else if (command.equals(Constants.HELP_COMMAND)) {
+            System.out.println(Constants.COMMANDS);
+
+            state.setGameState(Constants.GET_COMMAND);
         }
     }
 
@@ -45,7 +49,7 @@ public class EventLoop
             } else if (gameState == Constants.GET_COMMAND) {
                 this.runCommand(ui.getCommand());
             } else if (gameState == Constants.RUN) {
-                while (steps > 0) {
+                while (steps > 0 && state.getGameState() == Constants.RUN) {
                     steps--;
                     state.Step();
                     ui.printBoard();
