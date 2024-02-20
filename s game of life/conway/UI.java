@@ -13,7 +13,7 @@ public class UI
     public int getRow() {
         int row = 0;
 
-        while (row < 1 || row > Constants.BOARD_SIZE) {
+        while (row < 1 || row > state.getBoardSize()) {
             try {
                 System.out.println(Constants.ASK_ROW);
                 row = scanner.nextInt();
@@ -28,7 +28,7 @@ public class UI
     public int getCol() {
         int col = 0;
 
-        while (col < 1 || col > Constants.BOARD_SIZE) {
+        while (col < 1 || col > state.getBoardSize()) {
             try {
                 System.out.println(Constants.ASK_COL);
                 col = scanner.nextInt();
@@ -82,13 +82,13 @@ public class UI
     }
 
     public void printBoard() {
-        for (int x = 0; x < Constants.BOARD_SIZE; x++) {
-            for (int y = 0; y < Constants.BOARD_SIZE; y++) {
+        for (int x = 0; x < state.getBoardSize(); x++) {
+            for (int y = 0; y < state.getBoardSize(); y++) {
                 System.out.print(cellToString(state.getBoardCell(x,y)));
             }
             System.out.println();
         }
-        for (int y = 0; y < Constants.BOARD_SIZE; y++) {
+        for (int y = 0; y < state.getBoardSize(); y++) {
 
             System.out.print(Constants.SEPERATION_BAR);
         }

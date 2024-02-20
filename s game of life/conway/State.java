@@ -9,8 +9,9 @@ package conway;
 public class State
 {
     private int gameState = Constants.STANDBY;
+    private int boardSize = Constants.BOARD_SIZE;
     private static int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
-
+    
     public static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
@@ -19,7 +20,7 @@ public class State
         int surrounding = 0;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
-                if (row+x >= 0 && row+x < Constants.BOARD_SIZE && col+y >= 0 && col+y < Constants.BOARD_SIZE) {
+                if (row+x >= 0 && row+x < boardSize && col+y >= 0 && col+y < boardSize) {
                     if (board[row+x][col+y] == Constants.ALIVE) {
                         surrounding++;
                         if (y == 0 && x == 0) {
@@ -49,9 +50,9 @@ public class State
     }
 
     public void Step() {
-        int[][] quasiBoard = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
-        for (int x = 0; x < Constants.BOARD_SIZE; x++) {
-            for (int y = 0; y < Constants.BOARD_SIZE; y++) {
+        int[][] quasiBoard = new int[boardSize][boardSize];
+        for (int x = 0; x < boardSize; x++) {
+            for (int y = 0; y < boardSize; y++) {
                 if (board[x][y] == Constants.ALIVE) {
                     quasiBoard[x][y] = this.checkDeath(x, y);
                 } else {
@@ -80,6 +81,14 @@ public class State
 
     public void setGameState(int gameState) {
         this.gameState = gameState;
+    }
+    
+    public int getBoardSize() {
+        return this.boardSize;
+    }
+    
+    public void setBoardSize(int boardSize) {
+        this.boardSize = boardSize;
     }
 
     public void toggleBoardCell(int row, int col) {
