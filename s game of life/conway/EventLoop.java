@@ -37,6 +37,16 @@ public class EventLoop
             System.out.println(Constants.COMMANDS);
 
             state.setGameState(Constants.GET_COMMAND);
+        } else if (command.equals(Constants.RESET_COMMAND)) {
+            state.clearBoard();
+
+            ui.printBoard();
+            state.setGameState(Constants.GET_COMMAND);
+        } else if (command.equals(Constants.SET_GRID_SIZE_COMMAND)) {
+            state.setBoardSize(ui.getBoardSize());
+            
+            ui.printBoard();
+            state.setGameState(Constants.GET_COMMAND);
         }
     }
 

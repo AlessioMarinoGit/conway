@@ -55,6 +55,21 @@ public class UI
         return steps;
     }
 
+    public int getBoardSize() {
+        int size = 0;
+
+        while (size < Constants.MIN_SIZE || size > Constants.MAX_SIZE) {
+            try {
+                System.out.println(Constants.ASK_SIZE);
+                size = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println(Constants.INVALID_SIZE);
+                scanner.next();
+            }
+        }
+        return size;
+    }
+
     public String getCommand() {
         String command = "";
 

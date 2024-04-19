@@ -62,6 +62,10 @@ public class State
         }
         board = quasiBoard;
     }
+    
+    public void clearBoard() {
+        this.board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+    }
 
     public boolean isValidCommand(String command) {
         if (command.equals(Constants.TOGGLE_COMMAND) || command.equals(Constants.START_COMMAND)|| command.equals(Constants.RESET_COMMAND) || command.equals(Constants.SET_GRID_SIZE_COMMAND) || command.equals(Constants.EXIT_COMMAND) || command.equals(Constants.HELP_COMMAND)) {
@@ -87,8 +91,17 @@ public class State
         return this.boardSize;
     }
     
-    public void setBoardSize(int boardSize) {
-        this.boardSize = boardSize;
+    public void setBoardSize(int newSize) {
+        int[][] quasiBoard = new int[newSize][newSize];
+        for (int x = 0; x < this.boardSize; x++) {
+            for (int y = 0; y < this.boardSize; y++) {
+                if (this.board[x][y] == Constants.ALIVE) {
+                    quasiBoard[x][y] = Constants.ALIVE;
+                }
+            }
+        }
+        boardSize = newSize;
+        board = quasiBoard;
     }
 
     public void toggleBoardCell(int row, int col) {

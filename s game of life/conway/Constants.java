@@ -3,7 +3,9 @@ package conway;
 public class Constants
 {
     public static final int BOARD_SIZE = 10;
-    public static final int MAX_STEPS = 1000;
+    public static final int MAX_STEPS = 100;
+    public static final int MIN_SIZE = 5;
+    public static final int MAX_SIZE = 100;
     public static final int DELAY = 200;
     // Valid board values
     public static final int DEAD = 0;
@@ -40,8 +42,10 @@ public class Constants
     public static final String ASK_ROW = "Please enter row";
     public static final String ASK_COL = "Please enter column";
     public static final String ASK_STEPS = "Please enter steps";
+    public static final String ASK_SIZE = "Please enter new size";
     public static final String INVALID_STEPS = "Invalid number of steps. Max steps is " + MAX_STEPS;
     public static final String INVALID_CELL = "Cell %d, %d is not a valid cell. Please retry.";
+    public static final String INVALID_SIZE = "Invalid size. Minimum size is " + MIN_SIZE + ", maximum size is " + MAX_SIZE + ".";
     public static final String ALIVE_CELL = ":D";
     public static final String DEAD_CELL = "[]";
     public static final String SEPERATION_BAR = "--";
