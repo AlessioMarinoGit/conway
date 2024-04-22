@@ -47,6 +47,9 @@ public class EventLoop
             
             ui.printBoard();
             state.setGameState(Constants.GET_COMMAND);
+        } else if (command.equals(Constants.EXIT_COMMAND)) {
+            System.out.println(Constants.GOODBYE_MESSAGE);
+            state.setGameState(Constants.QUIT_PROGRAM);
         }
     }
 

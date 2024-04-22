@@ -49,4 +49,5 @@ public class Constants
     public static final String ALIVE_CELL = ":D";
     public static final String DEAD_CELL = "[]";
     public static final String SEPERATION_BAR = "--";
+    public static final String GOODBYE_MESSAGE = "Thank you for playing!";
 }

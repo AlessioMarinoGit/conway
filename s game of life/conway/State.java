@@ -9,7 +9,7 @@ package conway;
 public class State
 {
     private int gameState = Constants.STANDBY;
-    private int boardSize = Constants.BOARD_SIZE;
+    private static int boardSize = Constants.BOARD_SIZE;
     private static int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
     
     public static int clamp(int value, int min, int max) {
@@ -51,6 +51,7 @@ public class State
 
     public void Step() {
         int[][] quasiBoard = new int[boardSize][boardSize];
+        int differentCells = 0;
         for (int x = 0; x < boardSize; x++) {
             for (int y = 0; y < boardSize; y++) {
                 if (board[x][y] == Constants.ALIVE) {
@@ -58,7 +59,13 @@ public class State
                 } else {
                     quasiBoard[x][y] = this.checkBorn(x,y);
                 }
+                if (quasiBoard[x][y] != board[x][y]) {
+                    differentCells++;
+                }
             }
+        }
+        if (differentCells == 0) {
+             this.setGameState(Constants.STANDBY);
         }
         board = quasiBoard;
     }
