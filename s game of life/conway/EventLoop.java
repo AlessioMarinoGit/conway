@@ -1,11 +1,7 @@
 package conway;
 
-/**
- * Write a description of class EventLoop here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+// The foundation for the main functions for this code were given to me by my teacher.
+
 public class EventLoop
 {
     State state = new State();

@@ -1,11 +1,5 @@
 package conway;
 
-/**
- * Write a description of class State here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class State
 {
     private int gameState = Constants.STANDBY;
@@ -71,7 +65,8 @@ public class State
     }
     
     public void clearBoard() {
-        this.board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+        this.boardSize = Constants.BOARD_SIZE;
+        this.board = new int[boardSize][boardSize];
     }
 
     public boolean isValidCommand(String command) {
